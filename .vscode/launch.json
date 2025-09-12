@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Next.js (Backend)",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/next",
+            "runtimeArgs": [
+                "dev"
+            ],
+            "console": "integratedTerminal",
+            "skipFiles": [
+                "<node_internals>/**",
+                "${workspaceFolder}/node_modules/**"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Next.js (Frontend)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Next.js (Full Stack)",
+            "configurations": [
+                "Next.js (Backend)",
+                "Next.js (Frontend)"
+            ]
+        }
+    ]
+}
