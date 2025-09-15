@@ -6,6 +6,8 @@ import { ThemeProvider } from '@/components/ui/theme-provider';
 
 import { ClerkProvider } from '@clerk/nextjs';
 
+import { ApolloClientWrapper } from './components/ApolloClientWrapper';
+
 import './layout.css';
 
 export const metadata: Metadata =
@@ -18,13 +20,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 {
     const jsx: ReactElement =   <>
                                     <ClerkProvider>
-                                        <html className="" suppressHydrationWarning>
-                                            <body className="">
-                                                <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-                                                    { children }
-                                                </ThemeProvider>
-                                            </body>
-                                        </html>
+                                        <ApolloClientWrapper>
+                                            <html className="" suppressHydrationWarning>
+                                                <body className="">
+                                                    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+                                                        { children }
+                                                    </ThemeProvider>
+                                                </body>
+                                            </html>
+                                        </ApolloClientWrapper>
                                     </ClerkProvider>
                                 </>;
 

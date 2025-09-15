@@ -1,15 +1,16 @@
 'use client';
 
 import { useAuth, UserButton } from '@clerk/nextjs';
-import { GetToken } from '@clerk/types';
 
 import { useRouter } from 'next/navigation';
 
-import { useRef, useEffect, useState, RefObject, ReactElement } from 'react';
+import { useRef, useEffect, RefObject, ReactElement } from 'react';
 
 import Image from 'next/image';
 
 import Logo from '../../public/images/logo.png';
+
+import Books from '../components/Books';
 
 export default function Page()
 {
@@ -29,10 +30,6 @@ export default function Page()
 
                 if (isSignedIn === false)
                     router.push('/');
-                else
-                {
-                    // Do something
-                }
             }
         }
     }, [ isLoaded, isSignedIn, getToken, router ]);
@@ -51,7 +48,9 @@ export default function Page()
                     </div>
 
                     <div className="absolute top-20 pl-5 pr-5 w-full">
-                        <p className="text-2xl tracking-tight text-balance">Title</p>
+                        <p className="text-2xl tracking-tight text-balance">Books</p>
+
+                        <Books />
                     </div>
                 </>;
     }
